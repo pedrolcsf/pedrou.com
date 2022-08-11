@@ -71,7 +71,7 @@ function Home() {
 
   return (
     <Box>
-      <Flex justifyContent="space-between" h="300px">
+      <Flex mb="10" justifyContent="space-between" h="300px">
         <Box w="100%">
           <Box pl="2" pr="2" lineHeight="52px">
             <Text
@@ -141,6 +141,7 @@ function Home() {
               <Button
                 mt="2"
                 size="md"
+                mb="10"
                 colorScheme="pink"
                 onClick={() => router.push('/about')}
                 fontFamily="Ubuntu Condensed; sans-serif"
@@ -160,7 +161,18 @@ function Home() {
       </Flex>
 
       {/* Projects */}
-      <Flex pl="4" pr="4" pb="6" mt="10" pt="6" bg="rgba(0, 0, 0, 0.08)" borderRadius={6} flexDirection="column" alignItems="center" justifyContent="center">
+      <Flex
+        pl="4"
+        pr="4"
+        pb="6"
+        pt="6"
+        mt="12"
+        bg="rgba(0, 0, 0, 0.08)"
+        borderRadius={6}
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+      >
         <Text
           fontSize="42"
           fontFamily="Ubuntu Condensed; sans-serif"
