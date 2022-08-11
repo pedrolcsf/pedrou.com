@@ -71,7 +71,7 @@ function Home() {
 
   return (
     <Box>
-      <Flex mb="10" justifyContent="space-between" h="300px">
+      <Flex justifyContent="space-between" h="300px">
         <Box w="100%">
           <Box pl="2" pr="2" lineHeight="52px">
             <Text
