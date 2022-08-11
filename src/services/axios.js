@@ -1,7 +1,7 @@
 import axios from 'axios';
 export function getAPIClient() {
   const api = axios.create({
-    baseURL: 'pedroferreira.dev',
+    baseURL: '',
   });
 
   return api;
