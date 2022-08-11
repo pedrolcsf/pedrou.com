@@ -195,38 +195,27 @@ function Home() {
         {isWideVersion ? (
           <Flex pt="8" justifyContent="center" h="300px">
             <Box w="240px" mr="32px">
-              {/* 1 */}
               <motion.div
                 style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  borderRadius: '6px',
-                  width: '240px',
-                  height: '240px',
-                  background: useColorModeValue('white', '#44475a'),
+                  display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderRadius: '6px', marginRight: '32px', width: '240px', height: '240px', background: useColorModeValue('white', '#44475a'),
                 }}
                 transition={{
                   type: 'spring',
                   duration: 0.55,
                 }}
                 whileHover={{
-                  scale: 1.09,
-                  cursor: 'pointer',
-                  opacity: 0.8,
-                  borderRadius: '16px',
-                  border: '2px solid #ff79c6',
+                  scale: 1.09, cursor: 'pointer', opacity: 0.8, borderRadius: '16px', border: '2px solid #ff79c6',
                 }}
                 whileTap={{
                   border: '4px solid #ff79c6',
                   scale: 1.2,
                 }}
               >
-                <img style={{ width: '180px' }} src="/convertetudo.svg" />
-                <Text mt="2" mb="2" opacity="0.6" fontFamily="Ubuntu Condensed; sans-serif" fontWeight="300" fontSize="14">
-                  <Text fontWeight="bold" as="span">Converte Tudo,</Text>
-                  is a website that has the main functionality to perform conversions...
+                <img style={{ width: '160px', marginTop: '6px' }} src="/company.svg" />
+                <Text ml="2" mt="4" opacity="0.6" fontFamily="Ubuntu Condensed; sans-serif" fontWeight="300" fontSize="14">
+                  <Text fontWeight="bold" as="span">Company,</Text>
+                  {' '}
+                  is a future company, waiting for more details...
                 </Text>
               </motion.div>
 
