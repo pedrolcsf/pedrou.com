@@ -1,11 +1,11 @@
-import Head from 'next/head'
-import Header from '../components/header'
+import Head from 'next/head';
+import Header from '../components/header';
 
-const Contact = () => {
+function Contact() {
   return (
     <>
     </>
-  )
+  );
 }
 
-export default Contact
+export default Contact;

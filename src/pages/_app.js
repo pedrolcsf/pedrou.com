@@ -1,12 +1,13 @@
-import '../styles/globals.css'
+import '../styles/globals.css';
 
-import Layout from '../layouts/main'
+import { ChakraProvider } from '@chakra-ui/react';
+import { ToastContainer } from 'react-toastify';
+import Layout from '../layouts/main';
 
 // Chakra
-import { ChakraProvider } from '@chakra-ui/react'
 
 // theme
-import theme from '../lib/theme'
+import theme from '../lib/theme';
 
 function MyApp({ Component, pageProps, router }) {
   return (
@@ -14,8 +15,9 @@ function MyApp({ Component, pageProps, router }) {
       <Layout router={router}>
         <Component {...pageProps} />
       </Layout>
+      <ToastContainer autoClose={3000} />
     </ChakraProvider>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;

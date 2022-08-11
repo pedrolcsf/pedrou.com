@@ -1,9 +1,9 @@
-import { AnimatePresence, motion } from 'framer-motion'
-import { IconButton, useColorMode, useColorModeValue } from '@chakra-ui/react'
-import { RiMoonLine, RiSunLine } from 'react-icons/ri'
+import { AnimatePresence, motion } from 'framer-motion';
+import { IconButton, useColorMode, useColorModeValue } from '@chakra-ui/react';
+import { RiMoonLine, RiSunLine } from 'react-icons/ri';
 
-const ToggleThemeButton = () => {
-  const { toggleColorMode } = useColorMode()
+function ToggleThemeButton() {
+  const { toggleColorMode } = useColorMode();
 
   return (
     <AnimatePresence exitBeforeEnter initial={false}>
@@ -21,10 +21,10 @@ const ToggleThemeButton = () => {
           color={useColorModeValue('#f8f8f2', '#282a36')}
           icon={useColorModeValue(<RiMoonLine />, <RiSunLine />)}
           onClick={toggleColorMode}
-        ></IconButton>
+        />
       </motion.div>
     </AnimatePresence>
-  )
+  );
 }
 
-export default ToggleThemeButton
+export default ToggleThemeButton;

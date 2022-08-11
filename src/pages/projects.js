@@ -1,11 +1,11 @@
-import Head from 'next/head'
-import Header from '../components/header'
+import Head from 'next/head';
+import Header from '../components/header';
 
-const Projects = () => {
+function Projects() {
   return (
     <>
     </>
-  )
+  );
 }
 
-export default Projects
+export default Projects;

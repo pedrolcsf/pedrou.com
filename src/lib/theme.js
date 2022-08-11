@@ -1,26 +1,29 @@
-import { extendTheme } from '@chakra-ui/react'
-import { mode } from '@chakra-ui/theme-tools'
+import { extendTheme } from '@chakra-ui/react';
+import { mode } from '@chakra-ui/theme-tools';
+import 'react-toastify/dist/ReactToastify.css';
 
 const styles = {
-  global: props => ({
+  global: (props) => ({
     body: {
-      bg: mode('#f8f8f2', '#282a36')(props)
-    }
-  })
-}
+      bg: mode('#fff', '#282a36')(props),
+    },
+  }),
+};
 
 const fonts = {
-    heading: ""
-}
+  heading: '',
+};
 
 const colors = {
-    // example: '#88ccca'
-}
+  // example: '#88ccca'
+};
 
 const config = {
-    initialColorMode: 'dark',
-    useSystemColorMode: true
-}
+  initialColorMode: 'dark',
+  useSystemColorMode: false,
+};
 
-const theme = extendTheme({ config, styles, fonts, colors })
-export default theme
+const theme = extendTheme({
+  config, styles, fonts, colors,
+});
+export default theme;
