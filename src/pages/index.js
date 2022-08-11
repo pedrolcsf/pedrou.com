@@ -181,16 +181,29 @@ function Home() {
           Projects:
         </Text>
 
-        <Text
-          fontSize="14"
-          w="400px"
-          align="center"
-          fontFamily="Ubuntu Condensed; sans-serif"
-          fontWeight="300"
-          opacity="0.5"
-        >
-          Some of my projects, which are in development, to find out more about it, click on the desired project card.
-        </Text>
+        {isWideVersion ? (
+          <Text
+            fontSize="14"
+            w="400px"
+            align="center"
+            fontFamily="Ubuntu Condensed; sans-serif"
+            fontWeight="300"
+            opacity="0.5"
+          >
+            Some of my projects, which are in development, to find out more about it, click on the desired project card.
+          </Text>
+        ) : (
+          <Text
+            fontSize="14"
+            w="100%"
+            align="center"
+            fontFamily="Ubuntu Condensed; sans-serif"
+            fontWeight="300"
+            opacity="0.5"
+          >
+            Some of my projects, which are in development, to find out more about it, click on the desired project card.
+          </Text>
+        )}
 
         {isWideVersion ? (
           <Flex pt="8" justifyContent="center" h="300px">
