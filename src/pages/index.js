@@ -249,11 +249,9 @@ function Home() {
                   scale: 1.2,
                 }}
               >
-                <img style={{ width: '160px', marginTop: '6px' }} src="/company.svg" />
-                <Text ml="2" mt="4" opacity="0.6" fontFamily="Ubuntu Condensed; sans-serif" fontWeight="300" fontSize="14">
-                  <Text fontWeight="bold" as="span">Company,</Text>
-                  {' '}
-                  is a future company, waiting for more details...
+                <img style={{ width: '160px' }} />
+                <Text opacity="0.6" fontFamily="Ubuntu Condensed; sans-serif" fontWeight="300" fontSize="14">
+                  ...
                 </Text>
               </motion.div>
 
