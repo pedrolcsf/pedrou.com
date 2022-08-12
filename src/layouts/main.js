@@ -8,7 +8,7 @@ import Footer from '../components/footer';
 
 function Main({ children, router }) {
   return (
-    <Box as="main" pb="8">
+    <Box as="main">
       <Head>
         <title>Pedro Ferreira</title>
         <link rel="icon" href="/icon.svg" />
@@ -17,8 +17,7 @@ function Main({ children, router }) {
         <link href="https://fonts.googleapis.com/css2?family=Megrim&family=Ubuntu+Condensed&display=swap" rel="stylesheet" />
       </Head>
       <Header path={router.asPath} />
-      {/* maxW certo é = container.md */}
-      <Container maxW="container.lg" pt={16} pb={16}>
+      <Container maxW="100vw">
         {children}
       </Container>
       <Footer />

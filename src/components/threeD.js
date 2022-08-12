@@ -58,13 +58,13 @@ function ThreeD() {
 
       // 640 -> 240
       // 8   -> 6
-      const scale = scH * 0.005 + 2;
+      const scale = scH * 0.005;
       const camera = new three.OrthographicCamera(
-        -scale,
-        scale,
+        -scale - 1,
+        scale + 1,
         1,
-        -4.6,
-        0.01,
+        -3,
+        -1,
         50000,
       );
       camera.position.copy(initialCameraPosition);

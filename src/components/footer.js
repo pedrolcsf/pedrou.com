@@ -15,7 +15,7 @@ function Footer() {
         {' '}
         Pedro Ferreira - All rights reserved.
       </Box>
-      <Flex justifyContent="center" mt="2" align="center" opacity={0.5} fontSize="sm">
+      <Flex justifyContent="center" mt="2" mb="6" align="center" opacity={0.5} fontSize="sm">
         <Button
           as="a"
           cursor="pointer"

@@ -52,17 +52,15 @@ function Header(props) {
       <Flex
         as="header"
         w="100%"
-        maxW="1080px"
-        pl="4"
-        pr="4"
-        h="20"
+        maxW="1280px"
         mx="auto"
-        mt="8"
+        mt="6"
+        px={isWideVersion ? '24' : '4'}
         align="center"
         justifyContent="space-between"
       >
         <Flex alignItems="center">
-          <Heading>
+          <Heading w="100%">
             <Logo active={active} />
           </Heading>
           {isWideVersion && (
