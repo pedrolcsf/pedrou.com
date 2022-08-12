@@ -243,31 +243,10 @@ function Home() {
                   scale: 1.2,
                 }}
               >
-                <img style={{ width: '160px' }} />
-                <Text opacity="0.6" fontFamily="Ubuntu Condensed; sans-serif" fontWeight="300" fontSize="14">
-                  ...
-                </Text>
-              </motion.div>
-
-              <motion.div
-                style={{
-                  display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderRadius: '6px', marginRight: isWideVersion ? '32px' : '0', marginBottom: isWideVersion ? '0' : '16px', width: isWideVersion ? '240px' : '100%', height: '240px', background: useColorModeValue('white', '#44475a'),
-                }}
-                transition={{
-                  type: 'spring',
-                  duration: 0.55,
-                }}
-                whileHover={{
-                  scale: 1.09, cursor: 'pointer', opacity: 0.8, borderRadius: '16px', border: '2px solid #ff79c6',
-                }}
-                whileTap={{
-                  border: '4px solid #ff79c6',
-                  scale: 1.2,
-                }}
-              >
-                <img style={{ width: '160px' }} />
-                <Text opacity="0.6" fontFamily="Ubuntu Condensed; sans-serif" fontWeight="300" fontSize="14">
-                  ...
+                <img src={useColorModeValue('logos/logo-dark.svg', 'logos/logo-white.svg')} style={{ width: '160px', height: '160px' }} />
+                <Text textAlign="center" opacity="0.6" mt="4" fontFamily="Ubuntu Condensed; sans-serif" fontWeight="300" fontSize="14">
+                  Peazye,
+                  is my a future company.
                 </Text>
               </motion.div>
 
@@ -293,14 +272,36 @@ function Home() {
                   is a system for an aesthetic health clinic.
                 </Text>
               </motion.div>
+              {isWideVersion && (
+                <motion.div
+                  style={{
+                    display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderRadius: '6px', marginBottom: isWideVersion ? '0' : '16px', width: isWideVersion ? '240px' : '100%', height: '240px', background: useColorModeValue('white', '#44475a'),
+                  }}
+                  transition={{
+                    type: 'spring',
+                    duration: 0.55,
+                  }}
+                  whileHover={{
+                    scale: 1.09, cursor: 'pointer', opacity: 0.8, borderRadius: '16px', border: '2px solid #ff79c6',
+                  }}
+                  whileTap={{
+                    border: '4px solid #ff79c6',
+                    scale: 1.2,
+                  }}
+                >
+                  <img style={{ width: '160px' }} />
+                  <Text opacity="0.6" fontFamily="Ubuntu Condensed; sans-serif" fontWeight="300" fontSize="14">
+                    ...
+                  </Text>
+                </motion.div>
+              )}
+
             </Flex>
 
           </Flex>
         </Flex>
 
         <Flex
-          // bg={useColorModeValue('rgba(0, 0, 0, 0.10)', 'rgba(0, 0, 0, 0.20)')}
-          // border="1px solid rgba(0, 0, 0, 0.09)"
           mb="6"
           mt="4"
           p="6"
