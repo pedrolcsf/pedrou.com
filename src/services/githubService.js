@@ -1,7 +1,10 @@
 import axios from 'axios';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const GITHUB_USERNAME = 'pedrolcsf';
-const GITHUB_API_TOKEN = process.env.GITHUB_TOKEN;
+const GITHUB_API_TOKEN = process.env.NEXT_PUBLIC_GITHUB_API_TOKEN;
 
 export const fetchGitHubReposFav = async () => {
   try {
