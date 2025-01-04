@@ -17,10 +17,10 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup.mjs';
 
 import nookies, { setCookie } from 'nookies';
-import Loader from '../components/threeDLoader';
-import { api } from '../services/api';
-import { fetchGitHubReposFav } from '../services/githubService';
-const ThreeD = dynamic(() => import('../components/threeD'), {
+import Loader from '../../components/threeDLoader';
+import { api } from '../../services/api';
+import { fetchGitHubRepos } from '../../services/githubService';
+const ThreeD = dynamic(() => import('../../components/threeD'), {
   ssr: false,
   loading: () => <Loader />,
 });
@@ -46,7 +46,7 @@ function Home() {
   // Função para buscar repositórios do GitHub
   const fetchRepositories = useCallback(async () => {
     const loadRepos = async () => {
-      const repositories = await fetchGitHubReposFav();
+      const repositories = await fetchGitHubRepos();
       setRepos(repositories);
     };
 
@@ -159,35 +159,6 @@ function Home() {
               </Text>
             )}
 
-            {isWideVersion ? (
-              <Button
-                mt="2"
-                size="md"
-                w="150px"
-                colorScheme="pink"
-                onClick={(e) => {
-                  e.preventDefault();
-                  router.push('/about');
-                }}
-                fontFamily="Ubuntu Condensed; sans-serif"
-                fontWeight="500"
-              >
-                Read More
-              </Button>
-            ) : (
-              <Button
-                mt="2"
-                size="md"
-                w="100%"
-                colorScheme="pink"
-                onClick={() => router.push('/about')}
-                fontFamily="Ubuntu Condensed; sans-serif"
-                fontWeight="500"
-              >
-                Read More
-              </Button>
-            )}
-
           </Flex>
           {isWideVersion && (
           <Flex>
@@ -195,116 +166,6 @@ function Home() {
           </Flex>
           )}
 
-        </Flex>
-
-        <Flex
-          bg={useColorModeValue('rgba(0, 0, 0, 0.10)', 'rgba(0, 0, 0, 0.20)')}
-          border="1px solid rgba(0, 0, 0, 0.09)"
-          mb="4"
-          p="6"
-          w="100%"
-          flexDir="row"
-          alignItems="center"
-          justifyContent="center"
-          borderRadius={6}
-        >
-          <Flex alignItems="center" flexDir="column" w="100%">
-            <Text
-              fontSize="26"
-              color="pink.400"
-              textDecoration="underline"
-              mb="2"
-              fontFamily="Ubuntu Condensed; sans-serif"
-              fontWeight="bold"
-            >
-              {'</> '}
-              <Text onClick={() => router.push('/projects')} as="span" color="pink.300" cursor="pointer">Projects:</Text>
-            </Text>
-
-            {isWideVersion ? (
-              <Text
-                fontSize="14"
-                mb="4"
-                textAlign="center"
-                opacity="0.5"
-                w="470px"
-                fontFamily="Ubuntu Condensed; sans-serif"
-                fontWeight="bold"
-              >
-
-                These are my main projects, to see them all, click on the button below, and to know more about each one, just click on the project.
-              </Text>
-            ) : (
-              <Text
-                fontSize="14"
-                mb="4"
-                textAlign="center"
-                w="100%"
-                opacity="0.5"
-                fontFamily="Ubuntu Condensed; sans-serif"
-                fontWeight="bold"
-              >
-
-                These are my main projects, to see them all, click on the button below, and to know more about each one, just click on the project.
-              </Text>
-            )}
-
-            <Flex flexDir={isWideVersion ? 'row' : 'column'}>
-              {repos.slice(0, 3).map((repo) => (
-                <motion.div
-                  key={repo.id}
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    borderRadius: '6px',
-                    marginRight: isWideVersion ? '32px' : '0',
-                    marginBottom: isWideVersion ? '0' : '16px',
-                    width: isWideVersion ? '240px' : '100%',
-                    height: '240px',
-                    background: useColorModeValue('white', '#44475a'),
-                    cursor: 'pointer',
-                  }}
-                  transition={{
-                    type: 'spring',
-                    duration: 0.55,
-                  }}
-                  whileHover={{
-                    scale: 1.09,
-                    opacity: 0.8,
-                    borderRadius: '16px',
-                    border: '2px solid #ff79c6',
-                  }}
-                  whileTap={{
-                    border: '4px solid #ff79c6',
-                    scale: 1.2,
-                  }}
-                  onClick={() => window.open(repo.html_url, '_blank')}
-                >
-                  <Text
-                    fontSize="18"
-                    fontFamily="Ubuntu Condensed; sans-serif"
-                    fontWeight="bold"
-                    mt="2"
-                  >
-                    {repo.name}
-                  </Text>
-                  <Text
-                    textAlign="center"
-                    opacity="0.6"
-                    mt="4"
-                    fontFamily="Ubuntu Condensed; sans-serif"
-                    fontWeight="300"
-                    fontSize="14"
-                  >
-                    {repo.description || 'No description available.'}
-                  </Text>
-                </motion.div>
-              ))}
-            </Flex>
-
-          </Flex>
         </Flex>
 
         <Flex
@@ -347,36 +208,23 @@ function Home() {
             </Text>
 
             {isWideVersion ? (
-              <>
-                <Text
-                  textAlign="center"
-                  mt="4"
-                  fontSize="14"
-                  fontFamily="Ubuntu Condensed; sans-serif"
-                  opacity="0.7"
-                  w="380px"
-                  fontWeight="300"
-                >
-                  I've been working with programming for
-                  {' '}
-                  {yWork}
-                  {' '}
-                  years. I currently live in Brazil, working with (Java Script, React, React Native, Node.js, Next.js, Arduino, GoLang, and others).
-                </Text>
-                <Text
-                  fontSize="14"
-                  textAlign="center"
-                  mt="4"
-                  fontFamily="Ubuntu Condensed; sans-serif"
-                  opacity="0.7"
-                  w="380px"
-                  fontWeight="300"
-                >
+              <Text
+                textAlign="center"
+                mt="4"
+                fontSize="14"
+                fontFamily="Ubuntu Condensed; sans-serif"
+                opacity="0.7"
+                w="380px"
+                fontWeight="300"
+              >
 
-                  I currently use nextjs, nodejs and golang in my main projects.
-                  To contact me, send a message on any of the social networks below.
-                </Text>
-              </>
+                I have been working professionally in the field of programming for over six years, honing my skills and building a diverse range of expertise. Currently based in Brazil, I have had the opportunity to work on a variety of projects, utilizing some of the most in-demand and cutting-edge technologies in the industry.
+                <br />
+                <br />
+                My technical expertise includes a strong command of JavaScript, React, React Native, Node.js, Next.js, Arduino, GoLang, and many other tools and frameworks. These technologies have allowed me to craft robust, scalable, and high-performance applications across multiple domains.
+                {' '}
+                <br />
+              </Text>
             ) : (
               <Text
                 fontSize="16"
@@ -385,9 +233,66 @@ function Home() {
                 mt="4"
                 fontFamily="Ubuntu Condensed; sans-serif"
               >
-                I've been working with programming for 3 years. I currently live in Brazil, working with (Java Script, React, React Native, Node.js, Next.js, Arduino, GoLang, and others).
 
-                I currently use nextjs, nodejs and golang in my main projects. To contact me, send a message on any of the social networks below.
+                I have been working professionally in the field of programming for over six years, honing my skills and building a diverse range of expertise. Currently based in Brazil, I have had the opportunity to work on a variety of projects, utilizing some of the most in-demand and cutting-edge technologies in the industry.
+                <br />
+                <br />
+                My technical expertise includes a strong command of JavaScript, React, React Native, Node.js, Next.js, Arduino, GoLang, and many other tools and frameworks. These technologies have allowed me to craft robust, scalable, and high-performance applications across multiple domains.
+                {' '}
+                <br />
+              </Text>
+            )}
+
+          </Flex>
+          <Flex
+            flexDir="column"
+            alignItems="center"
+            textAlign="center"
+            justifyContent="center"
+            w="100%"
+          >
+
+            {isWideVersion ? (
+              <Text
+                textAlign="center"
+                mt="4"
+                fontSize="14"
+                fontFamily="Ubuntu Condensed; sans-serif"
+                opacity="0.7"
+                w="380px"
+                fontWeight="300"
+              >
+
+                In my most recent endeavors, I have focused heavily on Next.js, Node.js, and GoLang as the backbone of my main projects. These technologies enable me to deliver fast, reliable, and efficient solutions tailored to meet complex business needs.
+                <br />
+                <br />
+                Additionally, my experience with React and React Native has given me a strong foundation in building dynamic web and mobile applications, ensuring seamless user experiences. My work with Arduino has further broadened my skill set, incorporating hardware integration and IoT solutions into my repertoire.
+                <br />
+                <br />
+                I’m always eager to connect with like-minded professionals, collaborate on exciting new projects, or simply exchange ideas about technology and innovation.
+                <br />
+                <br />
+                If you'd like to get in touch, feel free to send me a message on any of the social networks below. I’m always open to discussing new opportunities, sharing knowledge, or helping solve challenging problems.
+              </Text>
+            ) : (
+              <Text
+                fontSize="16"
+                opacity="0.5"
+                w="100%"
+                mt="4"
+                fontFamily="Ubuntu Condensed; sans-serif"
+              >
+
+                In my most recent endeavors, I have focused heavily on Next.js, Node.js, and GoLang as the backbone of my main projects. These technologies enable me to deliver fast, reliable, and efficient solutions tailored to meet complex business needs.
+                <br />
+                <br />
+                Additionally, my experience with React and React Native has given me a strong foundation in building dynamic web and mobile applications, ensuring seamless user experiences. My work with Arduino has further broadened my skill set, incorporating hardware integration and IoT solutions into my repertoire.
+                <br />
+                <br />
+                I’m always eager to connect with like-minded professionals, collaborate on exciting new projects, or simply exchange ideas about technology and innovation.
+                <br />
+                <br />
+                If you'd like to get in touch, feel free to send me a message on any of the social networks below. I’m always open to discussing new opportunities, sharing knowledge, or helping solve challenging problems.
               </Text>
             )}
 

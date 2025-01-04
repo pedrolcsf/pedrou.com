@@ -4,8 +4,6 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { ToastContainer } from 'react-toastify';
 import Layout from '../layouts/main';
 
-// Chakra
-
 // theme
 import theme from '../lib/theme';
 

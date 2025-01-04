@@ -17,10 +17,10 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup.mjs';
 
 import nookies, { setCookie } from 'nookies';
-import Loader from '../components/threeDLoader';
-import { api } from '../services/api';
-import { fetchGitHubReposFav } from '../services/githubService';
-const ThreeD = dynamic(() => import('../components/threeD'), {
+import Loader from '../../components/threeDLoader';
+import { api } from '../../services/api';
+import { fetchGitHubRepos } from '../../services/githubService';
+const ThreeD = dynamic(() => import('../../components/threeD'), {
   ssr: false,
   loading: () => <Loader />,
 });
@@ -36,7 +36,6 @@ function Home() {
 
   const [repos, setRepos] = useState([]);
 
-  const [age, setAge] = useState();
   const [yWork, setYWork] = useState();
 
   const { register, handleSubmit } = useForm({
@@ -46,29 +45,14 @@ function Home() {
   // Função para buscar repositórios do GitHub
   const fetchRepositories = useCallback(async () => {
     const loadRepos = async () => {
-      const repositories = await fetchGitHubReposFav();
+      const repositories = await fetchGitHubRepos();
       setRepos(repositories);
     };
 
     loadRepos();
   }, []);
 
-  const setMyAge = useCallback(() => {
-    const dateOfBirth = new Date('2002-05-01');
-    const dateNow = new Date();
-    const age = dateNow.getFullYear() - dateOfBirth.getFullYear();
-    setAge(age - 1);
-  }, []);
-
-  const setYearsWork = useCallback(() => {
-    const dateNow = new Date();
-    const year = getYear(dateNow);
-    setYWork(year - 2019);
-  }, []);
-
   useEffect(() => {
-    setMyAge();
-    setYearsWork();
     fetchRepositories();
   }, []);
 
@@ -97,105 +81,6 @@ function Home() {
   return (
     <Flex mb="6" flexDir="column" w="100%" justifyContent="center" alignItems="center">
       <Flex flexDir="column" align="center" w="100%" maxW="1000px">
-        <Flex
-          mb="4"
-          p="6"
-          w="100%"
-          flexDir="row"
-          alignItems="center"
-          justifyContent="center"
-          borderRadius={6}
-        >
-          <Flex flexDir="column" w="100%">
-            <Text
-              fontSize="36"
-              fontFamily="Ubuntu Condensed; sans-serif"
-              fontWeight="bold"
-            >
-              Hi, Im Pedro Ferreira,
-            </Text>
-            <Text
-              fontSize="36"
-              fontFamily="Ubuntu Condensed; sans-serif"
-              fontWeight="bold"
-            >
-              This is My Personal Website.
-            </Text>
-            {isWideVersion ? (
-              <Text
-                fontSize="16"
-                opacity="0.5"
-                w="400px"
-                mt="4"
-                fontFamily="Ubuntu Condensed; sans-serif"
-              >
-                My name is Pedro Ferreira, I'm
-                {' '}
-                {age}
-                {' '}
-                years old, I've been working with programming for
-                {' '}
-                {yWork}
-                {' '}
-                years. I currently live in Brazil, working with (JavaScript, React, React Native, Next.js, Node.js, C# , GoLang, and others).
-              </Text>
-            ) : (
-              <Text
-                fontSize="16"
-                opacity="0.5"
-                w="100%"
-                mt="4"
-                fontFamily="Ubuntu Condensed; sans-serif"
-              >
-                My name is Pedro Ferreira, I'm
-                {' '}
-                {age}
-                {' '}
-                years old, I've been working with programming for
-                {' '}
-                {yWork}
-                {' '}
-                years. I currently live in Brazil, working with (Java Script, React, Next.js, Node.js, React Native, GoLang, and others).
-              </Text>
-            )}
-
-            {isWideVersion ? (
-              <Button
-                mt="2"
-                size="md"
-                w="150px"
-                colorScheme="pink"
-                onClick={(e) => {
-                  e.preventDefault();
-                  router.push('/about');
-                }}
-                fontFamily="Ubuntu Condensed; sans-serif"
-                fontWeight="500"
-              >
-                Read More
-              </Button>
-            ) : (
-              <Button
-                mt="2"
-                size="md"
-                w="100%"
-                colorScheme="pink"
-                onClick={() => router.push('/about')}
-                fontFamily="Ubuntu Condensed; sans-serif"
-                fontWeight="500"
-              >
-                Read More
-              </Button>
-            )}
-
-          </Flex>
-          {isWideVersion && (
-          <Flex>
-            <ThreeD />
-          </Flex>
-          )}
-
-        </Flex>
 
         <Flex
           bg={useColorModeValue('rgba(0, 0, 0, 0.10)', 'rgba(0, 0, 0, 0.20)')}
@@ -218,7 +103,7 @@ function Home() {
               fontWeight="bold"
             >
               {'</> '}
-              <Text onClick={() => router.push('/projects')} as="span" color="pink.300" cursor="pointer">Projects:</Text>
+              <Text as="span" color="pink.300">Projects:</Text>
             </Text>
 
             {isWideVersion ? (
@@ -231,7 +116,6 @@ function Home() {
                 fontFamily="Ubuntu Condensed; sans-serif"
                 fontWeight="bold"
               >
-
                 These are my main projects, to see them all, click on the button below, and to know more about each one, just click on the project.
               </Text>
             ) : (
@@ -244,13 +128,12 @@ function Home() {
                 fontFamily="Ubuntu Condensed; sans-serif"
                 fontWeight="bold"
               >
-
                 These are my main projects, to see them all, click on the button below, and to know more about each one, just click on the project.
               </Text>
             )}
 
-            <Flex flexDir={isWideVersion ? 'row' : 'column'}>
-              {repos.slice(0, 3).map((repo) => (
+            <Flex flexWrap="wrap" justifyContent="center">
+              {repos.map((repo, index) => (
                 <motion.div
                   key={repo.id}
                   style={{
@@ -259,12 +142,10 @@ function Home() {
                     alignItems: 'center',
                     justifyContent: 'center',
                     borderRadius: '6px',
-                    marginRight: isWideVersion ? '32px' : '0',
-                    marginBottom: isWideVersion ? '0' : '16px',
-                    width: isWideVersion ? '240px' : '100%',
+                    margin: '16px',
+                    width: '240px',
                     height: '240px',
                     background: useColorModeValue('white', '#44475a'),
-                    cursor: 'pointer',
                   }}
                   transition={{
                     type: 'spring',
@@ -272,6 +153,7 @@ function Home() {
                   }}
                   whileHover={{
                     scale: 1.09,
+                    cursor: 'pointer',
                     opacity: 0.8,
                     borderRadius: '16px',
                     border: '2px solid #ff79c6',
@@ -305,94 +187,6 @@ function Home() {
             </Flex>
 
           </Flex>
-        </Flex>
-
-        <Flex
-          mb="6"
-          mt="4"
-          p="6"
-          w="100%"
-          flexDir="row"
-          alignItems="center"
-          justifyContent="center"
-          borderRadius={6}
-          id="#about"
-        >
-          <Flex
-            flexDir="column"
-            alignItems="center"
-            justifyContent="center"
-            w="100%"
-          >
-            <img width="120px" style={{ borderRadius: '50%' }} src="https://avatars.githubusercontent.com/u/60015167?v=4" />
-            <Text
-              mt="4"
-              textAlign="center"
-              fontSize="24"
-              fontFamily="Ubuntu Condensed; sans-serif"
-              fontWeight="bold"
-            >
-              Pedro Ferreira
-            </Text>
-
-            <Text
-              textAlign="center"
-              fontSize="22"
-              fontFamily="Ubuntu Condensed; sans-serif"
-              fontWeight="bold"
-              textDecor="underline"
-              color="pink"
-            >
-              ( Software Developer )
-            </Text>
-
-            {isWideVersion ? (
-              <>
-                <Text
-                  textAlign="center"
-                  mt="4"
-                  fontSize="14"
-                  fontFamily="Ubuntu Condensed; sans-serif"
-                  opacity="0.7"
-                  w="380px"
-                  fontWeight="300"
-                >
-                  I've been working with programming for
-                  {' '}
-                  {yWork}
-                  {' '}
-                  years. I currently live in Brazil, working with (Java Script, React, React Native, Node.js, Next.js, Arduino, GoLang, and others).
-                </Text>
-                <Text
-                  fontSize="14"
-                  textAlign="center"
-                  mt="4"
-                  fontFamily="Ubuntu Condensed; sans-serif"
-                  opacity="0.7"
-                  w="380px"
-                  fontWeight="300"
-                >
-
-                  I currently use nextjs, nodejs and golang in my main projects.
-                  To contact me, send a message on any of the social networks below.
-                </Text>
-              </>
-            ) : (
-              <Text
-                fontSize="16"
-                opacity="0.5"
-                w="100%"
-                mt="4"
-                fontFamily="Ubuntu Condensed; sans-serif"
-              >
-                I've been working with programming for 3 years. I currently live in Brazil, working with (Java Script, React, React Native, Node.js, Next.js, Arduino, GoLang, and others).
-
-                I currently use nextjs, nodejs and golang in my main projects. To contact me, send a message on any of the social networks below.
-              </Text>
-            )}
-
-          </Flex>
-
         </Flex>
 
         <Flex
