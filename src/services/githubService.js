@@ -1,13 +1,13 @@
 import axios from 'axios';
 
 const GITHUB_USERNAME = 'pedrolcsf';
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+const GITHUB_API_TOKEN = process.env.GITHUB_TOKEN;
 
 export const fetchGitHubReposFav = async () => {
   try {
     const response = await axios.get(`https://api.github.com/users/${GITHUB_USERNAME}/repos`, {
       headers: {
-        Authorization: `Bearer ${GITHUB_TOKEN}`,
+        Authorization: `Bearer ${GITHUB_API_TOKEN}`,
       },
       params: {
         affiliation: 'owner,collaborator',
@@ -25,7 +25,7 @@ export const fetchGitHubRepos = async () => {
   try {
     const response = await axios.get(`https://api.github.com/users/${GITHUB_USERNAME}/repos`, {
       headers: {
-        Authorization: `Bearer ${GITHUB_TOKEN}`,
+        Authorization: `Bearer ${GITHUB_API_TOKEN}`,
       },
     });
 
