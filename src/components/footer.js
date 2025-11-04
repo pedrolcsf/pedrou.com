@@ -36,7 +36,7 @@ function Footer() {
         fontSize="sm"
         position="relative"
         zIndex={1}
-        gap={2}
+        gap={{ base: 2, md: 3 }}
       >
         <Button
           as="a"
@@ -45,6 +45,7 @@ function Footer() {
           aria-label="GitHub Profile"
           target="_blank"
           rel="noopener noreferrer"
+          mr={{ base: 2, md: 3 }}
         >
           <RiGithubLine color={iconColor} />
         </Button>
@@ -55,6 +56,7 @@ function Footer() {
           aria-label="Twitter Profile"
           target="_blank"
           rel="noopener noreferrer"
+          mr={{ base: 2, md: 3 }}
         >
           <RiTwitterLine color={iconColor} />
         </Button>
@@ -65,6 +67,7 @@ function Footer() {
           aria-label="Instagram Profile"
           target="_blank"
           rel="noopener noreferrer"
+          mr={{ base: 2, md: 3 }}
         >
           <RiInstagramLine color={iconColor} />
         </Button>

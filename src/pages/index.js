@@ -1157,7 +1157,7 @@ function Home() {
                         >
                           Tecnologias que trabalho:
                         </Text>
-                        <Flex wrap="wrap" gap={3} justify={{ base: 'center', md: 'flex-start' }}>
+                        <Flex wrap="wrap" gap={{ base: 2, md: 3 }} justify={{ base: 'center', md: 'flex-start' }}>
                           {technologies.map((tech, index) => (
                             <motion.div
                               key={tech}
