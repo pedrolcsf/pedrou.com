@@ -1041,6 +1041,8 @@ function Home() {
                       <Box
                         flexShrink={0}
                         position="relative"
+                        mb={{ base: '30px', sm: '40px', md: 0 }}
+                        mr={{ base: 0, md: '60px', lg: '80px' }}
                         _before={{
                           content: '""',
                           position: 'absolute',
@@ -1166,6 +1168,7 @@ function Home() {
                               viewport={{ once: false }}
                               transition={{ duration: 0.3, delay: index * 0.05 }}
                               whileHover={{ scale: 1.1, y: -3 }}
+                              style={{ marginRight: '8px', marginBottom: '8px' }}
                             >
                               <Badge
                                 colorScheme="brand"
