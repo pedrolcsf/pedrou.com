@@ -1,55 +1,82 @@
 import {
-  Flex, Box, useColorModeValue, Button,
+  Flex, Box, Button,
 } from '@chakra-ui/react';
 import {
   RiGithubLine, RiInstagramLine, RiLinkedinLine, RiTwitterLine,
 } from 'react-icons/ri';
 
+const iconColor = '#f8f8f2';
+
 function Footer() {
   return (
     <>
-      <Box color={useColorModeValue('#282a36', '#f8f8f2')} align="center" opacity={0.5} fontFamily="Ubuntu Condensed; sans-serif" fontSize="sm">
+      <Box
+        color={iconColor}
+        align="center"
+        opacity={0.7}
+        fontFamily="Ubuntu Condensed; sans-serif"
+        fontSize={{ base: 'xs', md: 'sm' }}
+        mt={{ base: 6, md: 8 }}
+        mb={{ base: 2, md: 4 }}
+        px={{ base: 4, md: 0 }}
+        position="relative"
+        zIndex={1}
+      >
         &copy;
         {' '}
         {new Date().getFullYear()}
         {' '}
-        Pedro Ferreira - All rights reserved.
+        Pedro Ferreira - Todos os direitos reservados.
       </Box>
-      <Flex justifyContent="center" mt="2" mb="6" align="center" opacity={0.5} fontSize="sm">
+      <Flex
+        justifyContent="center"
+        mb={{ base: '20px', md: '40px' }}
+        align="center"
+        opacity={0.7}
+        fontSize="sm"
+        position="relative"
+        zIndex={1}
+        gap={2}
+      >
         <Button
           as="a"
-          cursor="pointer"
           href="https://github.com/pedrolcsf/"
           size="sm"
+          aria-label="GitHub Profile"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          <RiGithubLine color={useColorModeValue('#282a36', '#f8f8f2')} />
+          <RiGithubLine color={iconColor} />
         </Button>
         <Button
           as="a"
-          cursor="pointer"
           href="https://twitter.com/pedrolcsf"
           size="sm"
-          ml="2"
+          aria-label="Twitter Profile"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          <RiTwitterLine color={useColorModeValue('#282a36', '#f8f8f2')} />
+          <RiTwitterLine color={iconColor} />
         </Button>
         <Button
           as="a"
-          cursor="pointer"
           href="https://www.instagram.com/pedrolcsf/"
           size="sm"
-          ml="2"
+          aria-label="Instagram Profile"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          <RiInstagramLine color={useColorModeValue('#282a36', '#f8f8f2')} />
+          <RiInstagramLine color={iconColor} />
         </Button>
         <Button
           as="a"
-          cursor="pointer"
           href="https://www.linkedin.com/in/pedrolcsf/"
           size="sm"
-          ml="2"
+          aria-label="LinkedIn Profile"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          <RiLinkedinLine color={useColorModeValue('#282a36', '#f8f8f2')} />
+          <RiLinkedinLine color={iconColor} />
         </Button>
       </Flex>
     </>

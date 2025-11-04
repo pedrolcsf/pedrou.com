@@ -1,13 +1,14 @@
 import {
   useState, useEffect, useRef, useCallback,
 } from 'react';
+import { Box } from '@chakra-ui/react';
 
-// Three
 import * as three from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { loadGLTFModel } from '../lib/model';
 
 import { Container, ThreeDSpinner } from './threeDLoader';
+import ThreeDControls from './threeDControls';
 
 function outCirc(x) {
   return Math.sqrt(1 - (x - 1) ** 4);
@@ -15,9 +16,11 @@ function outCirc(x) {
 
 function ThreeD() {
   const refContainer = useRef();
-  const [loading, setLoading] = useState();
-  const [_camera, setCamera] = useState();
-  const [renderer, setRenderer] = useState();
+  const [loading, setLoading] = useState(true);
+  const [camera, setCamera] = useState(null);
+  const [renderer, setRenderer] = useState(null);
+  const [controls, setControls] = useState(null);
+  const [isInteracting, setIsInteracting] = useState(false);
   const [target] = useState(new three.Vector3(0, 0.6, -0.5));
   const [initialCameraPosition] = useState(
     new three.Vector3(
@@ -28,7 +31,6 @@ function ThreeD() {
   );
 
   const [scene] = useState(new three.Scene());
-  const [_controls, setControls] = useState();
 
   const handleWindowResize = useCallback(() => {
     const { current: container } = refContainer;
@@ -81,8 +83,57 @@ function ThreeD() {
 
       const controls = new OrbitControls(camera, renderer.domElement);
       controls.autoRotate = true;
+      controls.autoRotateSpeed = 1.5;
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.05;
+      controls.enableZoom = true;
+      controls.enablePan = false;
+      controls.minDistance = 50;
+      controls.maxDistance = 150;
       controls.target = target;
       setControls(controls);
+
+      let interactionTimeout;
+      const isUserInteractingRef = { current: false };
+      let interactionEndTimeout;
+
+      const handleInteractionStart = () => {
+        isUserInteractingRef.current = true;
+        setIsInteracting(true);
+        renderer.domElement.style.cursor = 'grabbing';
+        controls.autoRotate = false;
+        clearTimeout(interactionTimeout);
+        clearTimeout(interactionEndTimeout);
+      };
+
+      const handleInteractionEnd = () => {
+        isUserInteractingRef.current = false;
+        renderer.domElement.style.cursor = 'grab';
+        clearTimeout(interactionTimeout);
+        clearTimeout(interactionEndTimeout);
+        interactionEndTimeout = setTimeout(() => {
+          if (!isUserInteractingRef.current && controls) {
+            setIsInteracting(false);
+            controls.autoRotate = true;
+            controls.update();
+          }
+        }, 2000);
+      };
+
+      renderer.domElement.style.cursor = 'grab';
+      renderer.domElement.addEventListener('mousedown', handleInteractionStart);
+      renderer.domElement.addEventListener('mouseup', handleInteractionEnd);
+      renderer.domElement.addEventListener('mouseleave', () => {
+        renderer.domElement.style.cursor = 'grab';
+        handleInteractionEnd();
+      });
+      renderer.domElement.addEventListener('wheel', (e) => {
+        handleInteractionStart();
+        clearTimeout(interactionTimeout);
+        interactionTimeout = setTimeout(() => {
+          handleInteractionEnd();
+        }, 1500);
+      });
 
       loadGLTFModel(scene, '/logo-sem-luzes.glb', {
         receiveShadow: false,
@@ -108,6 +159,9 @@ function ThreeD() {
           camera.position.z = p.z * Math.cos(rotSpeed) - p.x * Math.sin(rotSpeed);
           camera.lookAt(target);
         } else {
+          if (!isUserInteractingRef.current && controls) {
+            controls.autoRotate = true;
+          }
           controls.update();
         }
 
@@ -116,10 +170,29 @@ function ThreeD() {
 
       return () => {
         cancelAnimationFrame(req);
-        renderer.dispose();
+        if (renderer) {
+          renderer.dispose();
+        }
+        clearTimeout(interactionTimeout);
+        clearTimeout(interactionEndTimeout);
       };
     }
   }, []);
+
+  const handleReset = useCallback(() => {
+    if (camera && controls) {
+      camera.position.copy(initialCameraPosition);
+      camera.lookAt(target);
+      controls.target.copy(target);
+      controls.update();
+      setIsInteracting(false);
+      setTimeout(() => {
+        if (controls) {
+          controls.autoRotate = true;
+        }
+      }, 500);
+    }
+  }, [camera, controls, initialCameraPosition, target]);
 
   // Resize for threed work in different windows
   useEffect(() => {
@@ -130,7 +203,14 @@ function ThreeD() {
   }, [renderer, handleWindowResize]);
 
   return (
-    <Container ref={refContainer}>{loading && <ThreeDSpinner />}</Container>
+    <Box position="relative" w="100%" h="100%">
+      <Container ref={refContainer}>
+        {loading && <ThreeDSpinner />}
+      </Container>
+      {!loading && (
+        <ThreeDControls onReset={handleReset} isInteracting={isInteracting} />
+      )}
+    </Box>
   );
 }
 

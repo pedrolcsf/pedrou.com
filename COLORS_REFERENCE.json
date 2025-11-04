@@ -1,0 +1,149 @@
+{
+  "theme": "Dracula Theme / Dark Neon",
+  "description": "Paleta de cores dark mode com acentos neon vibrantes",
+  "colors": {
+    "background": {
+      "primary": {
+        "name": "Background Principal",
+        "hex": "#0a0a0f",
+        "rgb": "rgb(10, 10, 15)",
+        "usage": "Fundo principal da aplicação"
+      },
+      "dark": {
+        "name": "Dark",
+        "hex": "#282a36",
+        "rgb": "rgb(40, 42, 54)",
+        "usage": "Fundo alternativo"
+      },
+      "darker": {
+        "name": "Darker",
+        "hex": "#1a1b26",
+        "rgb": "rgb(26, 27, 38)",
+        "usage": "Fundo mais intenso"
+      }
+    },
+    "accent": {
+      "pink": {
+        "name": "Neon Pink / Brand",
+        "hex": "#ff79c6",
+        "rgb": "rgb(255, 121, 198)",
+        "usage": "Cor principal de destaque, CTAs, links"
+      },
+      "purple": {
+        "name": "Neon Purple",
+        "hex": "#bd93f9",
+        "rgb": "rgb(189, 147, 249)",
+        "usage": "Cor secundária, gradientes, acentos"
+      }
+    },
+    "text": {
+      "foreground": {
+        "name": "Foreground",
+        "hex": "#f8f8f2",
+        "rgb": "rgb(248, 248, 242)",
+        "usage": "Texto principal, títulos, conteúdo importante"
+      },
+      "comment": {
+        "name": "Comment",
+        "hex": "#6272a4",
+        "rgb": "rgb(98, 114, 164)",
+        "usage": "Texto secundário, descrições, comentários"
+      }
+    },
+    "cards": {
+      "background": {
+        "name": "Card Background",
+        "hex": "rgba(26, 27, 38, 0.95)",
+        "rgb": "rgb(26, 27, 38)",
+        "opacity": 0.95,
+        "usage": "Fundo de cards com glass effect"
+      },
+      "border": {
+        "name": "Card Border",
+        "hex": "rgba(255, 121, 198, 0.15)",
+        "rgb": "rgb(255, 121, 198)",
+        "opacity": 0.15,
+        "usage": "Bordas sutis de cards"
+      },
+      "backgroundLight": {
+        "name": "Card Background Light",
+        "hex": "rgba(40, 42, 54, 0.95)",
+        "rgb": "rgb(40, 42, 54)",
+        "opacity": 0.95,
+        "usage": "Fundo de cards mais claro"
+      }
+    },
+    "extended": {
+      "green": {
+        "name": "Neon Green",
+        "hex": "#50fa7b",
+        "usage": "Sucesso, validação"
+      },
+      "yellow": {
+        "name": "Neon Yellow",
+        "hex": "#f1fa8c",
+        "usage": "Avisos, destaques"
+      },
+      "orange": {
+        "name": "Orange",
+        "hex": "#ffb86c",
+        "usage": "Atenção"
+      },
+      "red": {
+        "name": "Red",
+        "hex": "#ff5555",
+        "usage": "Erros, alertas"
+      },
+      "cyan": {
+        "name": "Neon Cyan",
+        "hex": "#8be9fd",
+        "usage": "Informações, links"
+      }
+    }
+  },
+  "gradients": {
+    "primary": {
+      "name": "Rosa → Roxo (Principal)",
+      "css": "linear-gradient(to right, #ff79c6, #bd93f9)",
+      "cssAlt": "linear-gradient(135deg, #ff79c6 0%, #bd93f9 100%)",
+      "usage": "Botões, destaques, backgrounds"
+    },
+    "vertical": {
+      "name": "Gradiente Vertical Suave",
+      "css": "linear-gradient(to bottom, rgba(255, 121, 198, 0.06) 0%, transparent 40%, rgba(189, 147, 249, 0.06) 100%)",
+      "usage": "Backgrounds sutis, overlays"
+    }
+  },
+  "effects": {
+    "glow": {
+      "pink": "0 0 20px rgba(255, 121, 198, 0.6)",
+      "purple": "0 0 20px rgba(189, 147, 249, 0.6)",
+      "combined": "0 20px 60px rgba(255, 121, 198, 0.3)"
+    },
+    "glass": {
+      "backdrop": "blur(12px)",
+      "background": "rgba(26, 27, 38, 0.8)"
+    }
+  },
+  "socialMedia": {
+    "youtube": {
+      "background": "#0a0a0f",
+      "text": "#f8f8f2",
+      "accent": "#ff79c6",
+      "secondary": "#bd93f9"
+    },
+    "instagram": {
+      "background": "#282a36",
+      "card": "rgba(26, 27, 38, 0.95)",
+      "border": "rgba(255, 121, 198, 0.15)",
+      "accent": "#ff79c6"
+    },
+    "twitter": {
+      "background": "#1a1b26",
+      "text": "#f8f8f2",
+      "accent": "#ff79c6",
+      "secondary": "#6272a4"
+    }
+  }
+}
+

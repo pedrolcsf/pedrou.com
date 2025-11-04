@@ -1,42 +1,50 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Text, useBreakpointValue, useColorModeValue } from '@chakra-ui/react';
+import { Text, useBreakpointValue } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 import styled from '@emotion/styled';
+import { colors } from '../utils/colors';
 
 const ContainerLogo = styled.span`
   display: inline-flex;
   align-items: center;
-  height: 100px;
-  padding: 10px;
-  transition: 200ms ease;
+  padding: 8px;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 
   &:hover {
     transform: scale(0.98);
-    opacity: 50%
+    opacity: 0.8;
   }
-
 `;
 
 function Logo({ active }) {
-  const pathImg = `/logos/logo${useColorModeValue('-dark', '-white')}.svg`;
+  const pathImg = '/logos/logo-white.svg';
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    lg: true,
+  });
 
   return (
-    <Link href="/">
-      <a>
+    <Link href="/" passHref>
+      <motion.div
+        whileHover={{ scale: 0.98 }}
+        transition={{ type: 'spring', stiffness: 300 }}
+        style={{ display: 'inline-block', cursor: 'pointer' }}
+      >
         <ContainerLogo>
-          <Image src={pathImg} width={60} height={60} alt="Pedro Ferreira" />
+          <Image src={pathImg} width={isWideVersion ? 50 : 40} height={isWideVersion ? 50 : 40} alt="Pedro Ferreira Logo" />
           <Text
-            ml="4"
-            fontSize={24}
-            color={useColorModeValue('#282a36', '#f8f8f2')}
-            fontFamily="Ubuntu Condensed; sans-serif"
-            fontWeight="bold"
+            ml={isWideVersion ? '12px' : '8px'}
+            fontSize={isWideVersion ? '22px' : '18px'}
+            color={colors.foreground}
+            fontFamily="heading"
+            fontWeight="700"
+            letterSpacing="0.5px"
           >
             Pedro Ferreira
           </Text>
-
         </ContainerLogo>
-      </a>
+      </motion.div>
     </Link>
   );
 }
