@@ -32,6 +32,12 @@ function Projects() {
     lg: true,
   });
 
+  const projectCardBoxShadow = useBreakpointValue({
+    base: '0 15px 40px rgba(255, 121, 198, 0.25)',
+    md: '0 18px 50px rgba(255, 121, 198, 0.28)',
+    lg: '0 20px 60px rgba(255, 121, 198, 0.3)',
+  });
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -157,11 +163,7 @@ function Projects() {
                           boxShadow="0 10px 30px rgba(0, 0, 0, 0.1)"
                           _hover={{
                             borderColor: 'brand.500',
-                            boxShadow: {
-                              base: '0 15px 40px rgba(255, 121, 198, 0.25)',
-                              md: '0 18px 50px rgba(255, 121, 198, 0.28)',
-                              lg: '0 20px 60px rgba(255, 121, 198, 0.3)',
-                            },
+                            boxShadow: projectCardBoxShadow,
                             transform: 'translateY(-4px)',
                           }}
                           transition="all 0.4s cubic-bezier(0.22, 1, 0.36, 1)"

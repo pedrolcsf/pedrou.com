@@ -113,6 +113,18 @@ function Home() {
   const heroRef = useRef(null);
   const aboutRef = useRef(null);
 
+  const projectCardBoxShadow = useBreakpointValue({
+    base: '0 15px 40px rgba(255, 121, 198, 0.25)',
+    md: '0 18px 50px rgba(255, 121, 198, 0.28)',
+    lg: '0 20px 60px rgba(255, 121, 198, 0.3)',
+  });
+
+  const careerCardBoxShadow = useBreakpointValue({
+    base: '0 5px 15px rgba(255, 121, 198, 0.2)',
+    md: '0 8px 22px rgba(255, 121, 198, 0.2)',
+    lg: '0 10px 30px rgba(255, 121, 198, 0.2)',
+  });
+
   useEffect(() => {
     const { portfolio } = router.query;
     if (portfolio === 'programming' || portfolio === 'photography') {
@@ -704,11 +716,7 @@ function Home() {
                               boxShadow="0 10px 30px rgba(0, 0, 0, 0.1)"
                               _hover={{
                                 borderColor: 'brand.500',
-                                boxShadow: {
-                                  base: '0 15px 40px rgba(255, 121, 198, 0.25)',
-                                  md: '0 18px 50px rgba(255, 121, 198, 0.28)',
-                                  lg: '0 20px 60px rgba(255, 121, 198, 0.3)',
-                                },
+                                boxShadow: projectCardBoxShadow,
                                 transform: 'translateY(-4px)',
                               }}
                               transition="all 0.4s cubic-bezier(0.22, 1, 0.36, 1)"
@@ -1401,7 +1409,7 @@ function Home() {
                                   }
                                   _hover={{
                                     borderColor: 'brand.500',
-                                    boxShadow: { base: '0 5px 15px rgba(255, 121, 198, 0.2)', md: '0 8px 22px rgba(255, 121, 198, 0.2)', lg: '0 10px 30px rgba(255, 121, 198, 0.2)' },
+                                    boxShadow: careerCardBoxShadow,
                                   }}
                                   transition="all 0.3s ease"
                                   w="100%"
