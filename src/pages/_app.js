@@ -9,7 +9,7 @@ import theme from '../lib/theme';
 
 function MyApp({ Component, pageProps, router }) {
   return (
-    <ChakraProvider theme={theme}>
+    <ChakraProvider theme={theme} resetCSS>
       <Layout router={router}>
         <Component {...pageProps} />
       </Layout>
