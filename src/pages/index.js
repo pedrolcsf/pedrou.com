@@ -1263,7 +1263,7 @@ function Home() {
                     borderColor={colors.cardBorder}
                     boxShadow="0 20px 60px rgba(0, 0, 0, 0.1)"
                   >
-                    <VStack spacing={isWideVersion ? 8 : 6} align="stretch">
+                    <VStack spacing={{ base: 6, md: 7, lg: 8 }} align="stretch">
                       {careerTimeline.map((item, index) => (
                         <motion.div
                           key={`${item.year}-${item.company}-${item.title}`}
@@ -1271,11 +1271,14 @@ function Home() {
                           whileInView={{ opacity: 1, x: 0 }}
                           viewport={{ once: false }}
                           transition={{ duration: 0.6, delay: index * 0.1 }}
+                          style={{
+                            marginBottom: index !== careerTimeline.length - 1 ? '24px' : '0',
+                          }}
                         >
                           <Flex
                             flexDir={{ base: 'column', md: 'row' }}
                             gap={{ base: '20px', md: '30px', lg: '40px' }}
-                            alignItems={isWideVersion ? 'flex-start' : 'flex-start'}
+                            alignItems={{ base: 'flex-start', md: 'flex-start' }}
                             position="relative"
                             pb={index !== careerTimeline.length - 1 ? { base: 6, md: 7, lg: 8 } : 0}
                           >
@@ -1286,6 +1289,7 @@ function Home() {
                                 w="120px"
                                 textAlign="right"
                                 pt={1}
+                                mr={{ base: 0, md: '30px', lg: '40px' }}
                               >
                                 <HStack spacing={2} justify="flex-end" mb={1}>
                                   <Icon as={RiCalendarLine} color="brand.500" fontSize={{ base: '14px', md: '15px', lg: '16px' }} />
@@ -1340,7 +1344,15 @@ function Home() {
                             </>
                             )}
 
-                            <Box flex={1} position="relative" ml={{ base: '0', md: '30px', lg: '40px' }}>
+                            <Box
+                              flex={1}
+                              position="relative"
+                              ml={{ base: '0', md: '30px', lg: '40px' }}
+                              mt={{ base: '20px', md: 0 }}
+                              style={{
+                                marginLeft: isWideVersion ? '0' : undefined,
+                              }}
+                            >
                               {!isWideVersion && (
                               <Box mb={4} position="relative" pl="25px">
                                 <Box
@@ -1445,18 +1457,27 @@ function Home() {
                                     </Text>
 
                                     <Flex wrap="wrap" gap={{ base: 1.5, md: 2 }} mt={2}>
-                                      {item.technologies.map((tech) => (
-                                        <Badge
+                                      {item.technologies.map((tech, techIndex) => (
+                                        <Box
                                           key={tech}
-                                          colorScheme="brand"
-                                          variant="subtle"
-                                          px={{ base: 2, md: 2.5, lg: 3 }}
-                                          py={1}
-                                          fontSize={{ base: '11px', md: '11.5px', lg: '12px' }}
-                                          borderRadius="full"
+                                          mr={{ base: 1.5, md: 2 }}
+                                          mb={1.5}
+                                          style={{
+                                            marginRight: techIndex !== item.technologies.length - 1 ? '6px' : '0',
+                                            marginBottom: '6px',
+                                          }}
                                         >
-                                          {tech}
-                                        </Badge>
+                                          <Badge
+                                            colorScheme="brand"
+                                            variant="subtle"
+                                            px={{ base: 2, md: 2.5, lg: 3 }}
+                                            py={1}
+                                            fontSize={{ base: '11px', md: '11.5px', lg: '12px' }}
+                                            borderRadius="full"
+                                          >
+                                            {tech}
+                                          </Badge>
+                                        </Box>
                                       ))}
                                     </Flex>
                                   </VStack>
