@@ -157,7 +157,11 @@ function Projects() {
                           boxShadow="0 10px 30px rgba(0, 0, 0, 0.1)"
                           _hover={{
                             borderColor: 'brand.500',
-                            boxShadow: isWideVersion ? '0 20px 60px rgba(255, 121, 198, 0.3)' : '0 15px 40px rgba(255, 121, 198, 0.25)',
+                            boxShadow: {
+                              base: '0 15px 40px rgba(255, 121, 198, 0.25)',
+                              md: '0 18px 50px rgba(255, 121, 198, 0.28)',
+                              lg: '0 20px 60px rgba(255, 121, 198, 0.3)',
+                            },
                             transform: 'translateY(-4px)',
                           }}
                           transition="all 0.4s cubic-bezier(0.22, 1, 0.36, 1)"
@@ -260,11 +264,11 @@ function Projects() {
                     variant="outline"
                     colorScheme="brand"
                     onClick={() => router.push('/')}
-                    size={isWideVersion ? 'lg' : 'md'}
-                    fontSize={isWideVersion ? '17px' : '15px'}
+                    size={{ base: 'md', md: 'lg' }}
+                    fontSize={{ base: '15px', md: '16px', lg: '17px' }}
                     fontWeight="600"
-                    px={isWideVersion ? 10 : 6}
-                    py={isWideVersion ? 7 : 5}
+                    px={{ base: 6, md: 8, lg: 10 }}
+                    py={{ base: 5, md: 6, lg: 7 }}
                     leftIcon={<RiRocketLine />}
                   >
                     Voltar ao Início

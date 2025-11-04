@@ -189,8 +189,8 @@ function Home() {
               initial="hidden"
               animate="visible"
             >
-              <VStack spacing={12} align="stretch" minH={isWideVersion ? '80vh' : '60vh'} justify="center">
-                <Box textAlign="center" mb={isWideVersion ? 10 : 8}>
+              <VStack spacing={12} align="stretch" minH={{ base: '60vh', md: '70vh', lg: '80vh' }} justify="center">
+                <Box textAlign="center" mb={{ base: 8, md: 9, lg: 10 }}>
                   <motion.div variants={itemVariants}>
                     <Heading
                       fontSize={{
@@ -281,7 +281,7 @@ function Home() {
                           border="2px solid"
                           borderColor="brand.500"
                         >
-                          <Icon as={RiCodeSSlashLine} color="brand.500" fontSize={isWideVersion ? '64px' : '48px'} />
+                          <Icon as={RiCodeSSlashLine} color="brand.500" fontSize={{ base: '48px', md: '56px', lg: '64px' }} />
                         </Box>
                         <Heading
                           fontSize={{
@@ -305,13 +305,13 @@ function Home() {
                         </Text>
                         <HStack spacing={2} mt={4}>
                           <Text
-                            fontSize={isWideVersion ? '16px' : '14px'}
+                            fontSize={{ base: '14px', md: '15px', lg: '16px' }}
                             color="brand.500"
                             fontWeight="600"
                           >
                             Explorar
                           </Text>
-                          <Icon as={RiRocketLine} color="brand.500" fontSize={isWideVersion ? '20px' : '18px'} />
+                          <Icon as={RiRocketLine} color="brand.500" fontSize={{ base: '18px', md: '19px', lg: '20px' }} />
                         </HStack>
                       </VStack>
                     </Box>
@@ -378,7 +378,7 @@ function Home() {
                           border="2px solid"
                           borderColor="dracula.purple"
                         >
-                          <Icon as={RiCameraLine} color="dracula.purple" fontSize={isWideVersion ? '64px' : '48px'} />
+                          <Icon as={RiCameraLine} color="dracula.purple" fontSize={{ base: '48px', md: '56px', lg: '64px' }} />
                         </Box>
                         <Heading
                           fontSize={{
@@ -402,13 +402,13 @@ function Home() {
                         </Text>
                         <HStack spacing={2} mt={4}>
                           <Text
-                            fontSize={isWideVersion ? '16px' : '14px'}
+                            fontSize={{ base: '14px', md: '15px', lg: '16px' }}
                             color="dracula.purple"
                             fontWeight="600"
                           >
                             Explorar
                           </Text>
-                          <Icon as={RiRocketLine} color="dracula.purple" fontSize={isWideVersion ? '20px' : '18px'} />
+                          <Icon as={RiRocketLine} color="dracula.purple" fontSize={{ base: '18px', md: '19px', lg: '20px' }} />
                         </HStack>
                       </VStack>
                     </Box>
@@ -430,20 +430,24 @@ function Home() {
                 }}
               >
                 <Flex
-                  flexDir={isWideVersion ? 'row' : 'column'}
+                  flexDir={{ base: 'column', md: 'row' }}
                   alignItems="center"
                   justifyContent="space-between"
-                  minH={isWideVersion ? '400px' : 'auto'}
-                  gap={isWideVersion ? '60px' : '30px'}
+                  minH={{ base: 'auto', md: '350px', lg: '400px' }}
+                  gap={{
+                    base: '30px', sm: '40px', md: '50px', lg: '60px',
+                  }}
                   position="relative"
                   zIndex={2}
                 >
                   <VStack
-                    mt={isWideVersion ? 24 : 12}
-                    align={isWideVersion ? 'flex-start' : 'center'}
-                    spacing={isWideVersion ? 6 : 5}
+                    mt={{
+                      base: 12, sm: 16, md: 20, lg: 24,
+                    }}
+                    align={{ base: 'center', md: 'flex-start' }}
+                    spacing={{ base: 5, md: 5.5, lg: 6 }}
                     flex={1}
-                    textAlign={isWideVersion ? 'left' : 'center'}
+                    textAlign={{ base: 'center', md: 'left' }}
                   >
                     <motion.div
                       variants={itemVariants}
@@ -498,7 +502,7 @@ function Home() {
                     <motion.div variants={itemVariants}>
                       <Box position="relative">
                         <VStack
-                          align={isWideVersion ? 'flex-start' : 'center'}
+                          align={{ base: 'center', md: 'flex-start' }}
                           spacing={0}
                           position="relative"
                           _before={{
@@ -566,12 +570,12 @@ function Home() {
 
                     <motion.div variants={itemVariants}>
                       <Text
-                        fontSize={isWideVersion ? '18px' : '16px'}
+                        fontSize={{ base: '16px', md: '17px', lg: '18px' }}
                         color={colors.comment}
-                        maxW={isWideVersion ? '550px' : '100%'}
-                        lineHeight={isWideVersion ? '1.8' : '1.7'}
-                        mb={isWideVersion ? 6 : 4}
-                        px={isWideVersion ? 0 : 2}
+                        maxW={{ base: '100%', md: '500px', lg: '550px' }}
+                        lineHeight={{ base: '1.7', md: '1.75', lg: '1.8' }}
+                        mb={{ base: 4, md: 5, lg: 6 }}
+                        px={{ base: 2, md: 0 }}
                       >
                         Software Engineer focado em Backend com 6 anos de experiência,
                         trabalhando com empresas de alto crescimento em tecnologias modernas.
@@ -588,9 +592,9 @@ function Home() {
                   >
                     <Box
                       position="relative"
-                      w={isWideVersion ? '450px' : '100%'}
-                      h={isWideVersion ? '450px' : '300px'}
-                      maxW={isWideVersion ? '450px' : '100%'}
+                      w={{ base: '100%', md: '400px', lg: '450px' }}
+                      h={{ base: '300px', md: '400px', lg: '450px' }}
+                      maxW={{ base: '100%', md: '400px', lg: '450px' }}
                     >
                       <ThreeD />
                     </Box>
@@ -621,12 +625,12 @@ function Home() {
                         transition={{ duration: 0.6 }}
                       >
                         <HStack spacing={2} justify="center" mb={3}>
-                          <Icon as={RiCodeSSlashLine} color="brand.500" fontSize={isWideVersion ? '28px' : '24px'} />
+                          <Icon as={RiCodeSSlashLine} color="brand.500" fontSize={{ base: '24px', md: '26px', lg: '28px' }} />
                           <Text
-                            fontSize={isWideVersion ? '14px' : '12px'}
+                            fontSize={{ base: '12px', md: '13px', lg: '14px' }}
                             color="brand.500"
                             fontWeight="600"
-                            letterSpacing={isWideVersion ? '3px' : '2px'}
+                            letterSpacing={{ base: '2px', md: '2.5px', lg: '3px' }}
                             textTransform="uppercase"
                           >
                             Programação
@@ -693,18 +697,24 @@ function Home() {
                               onClick={() => window.open(repo.html_url, '_blank', 'noopener,noreferrer')}
                               bg={colors.cardBg}
                               backdropFilter="blur(12px)"
-                              borderRadius={isWideVersion ? '24px' : '18px'}
-                              p={isWideVersion ? 8 : 6}
+                              borderRadius={{ base: '18px', md: '20px', lg: '24px' }}
+                              p={{ base: 6, md: 7, lg: 8 }}
                               border="2px solid"
                               borderColor={colors.cardBorder}
                               boxShadow="0 10px 30px rgba(0, 0, 0, 0.1)"
                               _hover={{
                                 borderColor: 'brand.500',
-                                boxShadow: isWideVersion ? '0 20px 60px rgba(255, 121, 198, 0.3)' : '0 15px 40px rgba(255, 121, 198, 0.25)',
+                                boxShadow: {
+                                  base: '0 15px 40px rgba(255, 121, 198, 0.25)',
+                                  md: '0 18px 50px rgba(255, 121, 198, 0.28)',
+                                  lg: '0 20px 60px rgba(255, 121, 198, 0.3)',
+                                },
                                 transform: 'translateY(-4px)',
                               }}
                               transition="all 0.4s cubic-bezier(0.22, 1, 0.36, 1)"
-                              minH={isWideVersion ? '280px' : '240px'}
+                              minH={{
+                                base: '220px', sm: '240px', md: '260px', lg: '280px',
+                              }}
                               h="100%"
                               w="100%"
                               textAlign="left"
@@ -730,7 +740,7 @@ function Home() {
                               <VStack align="stretch" spacing={4} position="relative" zIndex={1} flex={1} justify="space-between">
                                 <Box>
                                   <HStack justify="space-between" align="flex-start" mb={3}>
-                                    <Icon as={RiCodeSSlashLine} color="brand.500" fontSize={isWideVersion ? '28px' : '24px'} />
+                                    <Icon as={RiCodeSSlashLine} color="brand.500" fontSize={{ base: '24px', md: '26px', lg: '28px' }} />
                                     {repo.stargazers_count > 0 && (
                                     <Badge
                                       bg="rgba(255, 121, 198, 0.15)"
@@ -750,7 +760,7 @@ function Home() {
                                     )}
                                   </HStack>
                                   <Heading
-                                    fontSize={isWideVersion ? '24px' : '20px'}
+                                    fontSize={{ base: '20px', md: '22px', lg: '24px' }}
                                     fontWeight="bold"
                                     color={colors.foreground}
                                     mb={3}
@@ -759,11 +769,11 @@ function Home() {
                                     {repo.name}
                                   </Heading>
                                   <Text
-                                    fontSize={isWideVersion ? '15px' : '14px'}
+                                    fontSize={{ base: '14px', md: '14.5px', lg: '15px' }}
                                     color={colors.comment}
                                     lineHeight="1.7"
-                                    noOfLines={isWideVersion ? 3 : 4}
-                                    minH={isWideVersion ? '72px' : '84px'}
+                                    noOfLines={{ base: 4, md: 3, lg: 3 }}
+                                    minH={{ base: '84px', md: '72px', lg: '72px' }}
                                   >
                                     {repo.description || 'Sem descrição disponível.'}
                                   </Text>
@@ -810,11 +820,11 @@ function Home() {
                           variant="outline"
                           colorScheme="brand"
                           onClick={() => router.push('/projects')}
-                          size={isWideVersion ? 'lg' : 'md'}
-                          fontSize={isWideVersion ? '17px' : '15px'}
+                          size={{ base: 'md', md: 'lg' }}
+                          fontSize={{ base: '15px', md: '16px', lg: '17px' }}
                           fontWeight="600"
-                          px={isWideVersion ? 10 : 6}
-                          py={isWideVersion ? 7 : 5}
+                          px={{ base: 6, md: 8, lg: 10 }}
+                          py={{ base: 5, md: 6, lg: 7 }}
                           rightIcon={<RiRocketLine />}
                         >
                           Ver Todos os Projetos
@@ -850,33 +860,37 @@ function Home() {
                       transition={{ duration: 0.6 }}
                     >
                       <HStack spacing={2} justify="center" mb={3}>
-                        <Icon as={RiCameraLine} color="brand.500" fontSize={isWideVersion ? '28px' : '24px'} />
+                        <Icon as={RiCameraLine} color="brand.500" fontSize={{ base: '24px', md: '26px', lg: '28px' }} />
                         <Text
-                          fontSize={isWideVersion ? '14px' : '12px'}
+                          fontSize={{ base: '12px', md: '13px', lg: '14px' }}
                           color="brand.500"
                           fontWeight="600"
-                          letterSpacing={isWideVersion ? '3px' : '2px'}
+                          letterSpacing={{ base: '2px', md: '2.5px', lg: '3px' }}
                           textTransform="uppercase"
                         >
                           Fotografia & Cinema
                         </Text>
                       </HStack>
                       <Heading
-                        fontSize={isWideVersion ? '56px' : '32px'}
+                        fontSize={{
+                          base: '32px', sm: '40px', md: '48px', lg: '56px',
+                        }}
                         fontWeight="bold"
                         color={colors.foreground}
                         mb={4}
-                        px={isWideVersion ? 0 : 4}
+                        px={{ base: 4, md: 0 }}
                       >
                         Trabalhos Visuais
                       </Heading>
                       <Text
-                        fontSize={isWideVersion ? '19px' : '15px'}
+                        fontSize={{
+                          base: '15px', sm: '17px', md: '18px', lg: '19px',
+                        }}
                         color={colors.comment}
                         maxW="650px"
                         mx="auto"
                         lineHeight="1.7"
-                        px={isWideVersion ? 0 : 4}
+                        px={{ base: 4, md: 0 }}
                       >
                         Além do código, também tenho paixão por fotografia e cinema.
                         Esta seção será atualizada em breve com alguns dos meus trabalhos visuais.
@@ -887,20 +901,20 @@ function Home() {
                   <Box
                     bg={colors.cardBg}
                     backdropFilter="blur(12px)"
-                    borderRadius={isWideVersion ? '28px' : '20px'}
-                    p={isWideVersion ? '80px' : '40px'}
+                    borderRadius={{ base: '20px', md: '24px', lg: '28px' }}
+                    p={{ base: '40px', md: '60px', lg: '80px' }}
                     border="2px solid"
                     borderColor={colors.cardBorder}
                     boxShadow="0 20px 60px rgba(0, 0, 0, 0.1)"
                   >
                     <VStack spacing={6} align="center">
-                      <Icon as={RiCameraLine} color="brand.500" fontSize={isWideVersion ? '64px' : '48px'} opacity={0.5} />
+                      <Icon as={RiCameraLine} color="brand.500" fontSize={{ base: '48px', md: '56px', lg: '64px' }} opacity={0.5} />
                       <Text
-                        fontSize={isWideVersion ? '20px' : '18px'}
+                        fontSize={{ base: '18px', md: '19px', lg: '20px' }}
                         color={colors.comment}
                         textAlign="center"
-                        maxW={isWideVersion ? '500px' : '100%'}
-                        px={isWideVersion ? 0 : 4}
+                        maxW={{ base: '100%', md: '450px', lg: '500px' }}
+                        px={{ base: 4, md: 0 }}
                       >
                         Em breve você encontrará aqui uma seleção dos meus trabalhos em fotografia e cinema.
                       </Text>
@@ -931,8 +945,8 @@ function Home() {
                     setSelectedPortfolio(null);
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  size={isWideVersion ? 'md' : 'sm'}
-                  fontSize={isWideVersion ? '15px' : '14px'}
+                  size={{ base: 'sm', md: 'md' }}
+                  fontSize={{ base: '14px', md: '14.5px', lg: '15px' }}
                   leftIcon={<RiLinksLine />}
                 >
                   Voltar à escolha
@@ -966,12 +980,12 @@ function Home() {
                       transition={{ duration: 0.6 }}
                     >
                       <HStack spacing={2} justify="center" mb={3}>
-                        <Icon as={RiLightbulbFlashLine} color="brand.500" fontSize={isWideVersion ? '28px' : '24px'} />
+                        <Icon as={RiLightbulbFlashLine} color="brand.500" fontSize={{ base: '24px', md: '26px', lg: '28px' }} />
                         <Text
-                          fontSize={isWideVersion ? '14px' : '12px'}
+                          fontSize={{ base: '12px', md: '13px', lg: '14px' }}
                           color="brand.500"
                           fontWeight="600"
-                          letterSpacing={isWideVersion ? '3px' : '2px'}
+                          letterSpacing={{ base: '2px', md: '2.5px', lg: '3px' }}
                           textTransform="uppercase"
                         >
                           Sobre Mim
@@ -1037,18 +1051,22 @@ function Home() {
                           as="img"
                           src="https://avatars.githubusercontent.com/u/60015167?v=4"
                           alt="Pedro Ferreira"
-                          w={isWideVersion ? '240px' : '160px'}
-                          h={isWideVersion ? '240px' : '160px'}
+                          w={{
+                            base: '160px', sm: '200px', md: '220px', lg: '240px',
+                          }}
+                          h={{
+                            base: '160px', sm: '200px', md: '220px', lg: '240px',
+                          }}
                           borderRadius="50%"
-                          border={isWideVersion ? '5px solid' : '4px solid'}
+                          border={{ base: '4px solid', md: '4.5px solid', lg: '5px solid' }}
                           borderColor="brand.500"
                           boxShadow="0 20px 60px rgba(255, 121, 198, 0.4)"
                         />
                       </Box>
                     </motion.div>
 
-                    <VStack align={isWideVersion ? 'flex-start' : 'center'} spacing={6} flex={1}>
-                      <Box textAlign={isWideVersion ? 'left' : 'center'}>
+                    <VStack align={{ base: 'center', md: 'flex-start' }} spacing={6} flex={1}>
+                      <Box textAlign={{ base: 'center', md: 'left' }}>
                         <motion.div
                           initial={{ opacity: 1, x: 0 }}
                           whileInView={{ opacity: 1, x: 0 }}
@@ -1056,7 +1074,9 @@ function Home() {
                           transition={{ duration: 0.6 }}
                         >
                           <Heading
-                            fontSize={isWideVersion ? '42px' : '28px'}
+                            fontSize={{
+                              base: '28px', sm: '34px', md: '38px', lg: '42px',
+                            }}
                             fontWeight="bold"
                             color={colors.foreground}
                             mb={3}
@@ -1064,14 +1084,14 @@ function Home() {
                             Pedro Ferreira
                           </Heading>
                           <Text
-                            fontSize={isWideVersion ? '22px' : '18px'}
+                            fontSize={{ base: '18px', md: '20px', lg: '22px' }}
                             color="brand.500"
                             fontWeight="600"
                           >
                             Senior Software Engineer @ NeuroVerse
                           </Text>
                           <Text
-                            fontSize={isWideVersion ? '16px' : '14px'}
+                            fontSize={{ base: '14px', md: '15px', lg: '16px' }}
                             color={colors.comment}
                             mt={2}
                           >
@@ -1125,11 +1145,11 @@ function Home() {
                           fontWeight="600"
                           color={colors.foreground}
                           mb={4}
-                          textAlign={isWideVersion ? 'left' : 'center'}
+                          textAlign={{ base: 'center', md: 'left' }}
                         >
                           Tecnologias que trabalho:
                         </Text>
-                        <Flex wrap="wrap" gap={3} justify={isWideVersion ? 'flex-start' : 'center'}>
+                        <Flex wrap="wrap" gap={3} justify={{ base: 'center', md: 'flex-start' }}>
                           {technologies.map((tech, index) => (
                             <motion.div
                               key={tech}
@@ -1186,12 +1206,12 @@ function Home() {
                       transition={{ duration: 0.6 }}
                     >
                       <HStack spacing={2} justify="center" mb={3}>
-                        <Icon as={RiBriefcaseLine} color="brand.500" fontSize={isWideVersion ? '28px' : '24px'} />
+                        <Icon as={RiBriefcaseLine} color="brand.500" fontSize={{ base: '24px', md: '26px', lg: '28px' }} />
                         <Text
-                          fontSize={isWideVersion ? '14px' : '12px'}
+                          fontSize={{ base: '12px', md: '13px', lg: '14px' }}
                           color="brand.500"
                           fontWeight="600"
-                          letterSpacing={isWideVersion ? '3px' : '2px'}
+                          letterSpacing={{ base: '2px', md: '2.5px', lg: '3px' }}
                           textTransform="uppercase"
                         >
                           Carreira
@@ -1226,8 +1246,8 @@ function Home() {
                   <Box
                     bg={colors.cardBg}
                     backdropFilter="blur(12px)"
-                    borderRadius={isWideVersion ? '28px' : '20px'}
-                    p={isWideVersion ? '80px' : '40px'}
+                    borderRadius={{ base: '20px', md: '24px', lg: '28px' }}
+                    p={{ base: '40px', md: '60px', lg: '80px' }}
                     border="2px solid"
                     borderColor={colors.cardBorder}
                     boxShadow="0 20px 60px rgba(0, 0, 0, 0.1)"
@@ -1242,11 +1262,11 @@ function Home() {
                           transition={{ duration: 0.6, delay: index * 0.1 }}
                         >
                           <Flex
-                            flexDir={isWideVersion ? 'row' : 'column'}
-                            gap={isWideVersion ? '40px' : '20px'}
+                            flexDir={{ base: 'column', md: 'row' }}
+                            gap={{ base: '20px', md: '30px', lg: '40px' }}
                             alignItems={isWideVersion ? 'flex-start' : 'flex-start'}
                             position="relative"
-                            pb={index !== careerTimeline.length - 1 && (isWideVersion ? 8 : 6)}
+                            pb={index !== careerTimeline.length - 1 ? { base: 6, md: 7, lg: 8 } : 0}
                           >
                             {isWideVersion && (
                             <>
@@ -1257,7 +1277,7 @@ function Home() {
                                 pt={1}
                               >
                                 <HStack spacing={2} justify="flex-end" mb={1}>
-                                  <Icon as={RiCalendarLine} color="brand.500" fontSize={isWideVersion ? '16px' : '14px'} />
+                                  <Icon as={RiCalendarLine} color="brand.500" fontSize={{ base: '14px', md: '15px', lg: '16px' }} />
                                   <Text
                                     fontSize={{
                                       base: '14px', sm: '16px', md: '17px', lg: '18px',
@@ -1275,7 +1295,7 @@ function Home() {
                                   px={2}
                                   py={1}
                                   borderRadius="full"
-                                  fontSize={isWideVersion ? '11px' : '10px'}
+                                  fontSize={{ base: '10px', md: '10.5px', lg: '11px' }}
                                 >
                                   Atual
                                 </Badge>
@@ -1309,7 +1329,7 @@ function Home() {
                             </>
                             )}
 
-                            <Box flex={1} position="relative" ml={isWideVersion ? '40px' : '0'}>
+                            <Box flex={1} position="relative" ml={{ base: '0', md: '30px', lg: '40px' }}>
                               {!isWideVersion && (
                               <Box mb={4} position="relative" pl="25px">
                                 <Box
@@ -1338,7 +1358,7 @@ function Home() {
                                 />
                                 )}
                                 <HStack spacing={2} mb={2}>
-                                  <Icon as={RiCalendarLine} color="brand.500" fontSize={isWideVersion ? '16px' : '14px'} />
+                                  <Icon as={RiCalendarLine} color="brand.500" fontSize={{ base: '14px', md: '15px', lg: '16px' }} />
                                   <Text
                                     fontSize={{
                                       base: '14px', sm: '16px', md: '17px', lg: '18px',
@@ -1355,7 +1375,7 @@ function Home() {
                                     px={2}
                                     py={1}
                                     borderRadius="full"
-                                    fontSize={isWideVersion ? '11px' : '10px'}
+                                    fontSize={{ base: '10px', md: '10.5px', lg: '11px' }}
                                   >
                                     Atual
                                   </Badge>
@@ -1371,8 +1391,8 @@ function Home() {
                                 <Box
                                   bg={colors.cardBgLight}
                                   backdropFilter="blur(8px)"
-                                  borderRadius={isWideVersion ? '16px' : '12px'}
-                                  p={isWideVersion ? 6 : 4}
+                                  borderRadius={{ base: '12px', md: '14px', lg: '16px' }}
+                                  p={{ base: 4, md: 5, lg: 6 }}
                                   border="1px solid"
                                   borderColor={
                                     item.type === 'current'
@@ -1381,15 +1401,15 @@ function Home() {
                                   }
                                   _hover={{
                                     borderColor: 'brand.500',
-                                    boxShadow: isWideVersion ? '0 10px 30px rgba(255, 121, 198, 0.2)' : '0 5px 15px rgba(255, 121, 198, 0.2)',
+                                    boxShadow: { base: '0 5px 15px rgba(255, 121, 198, 0.2)', md: '0 8px 22px rgba(255, 121, 198, 0.2)', lg: '0 10px 30px rgba(255, 121, 198, 0.2)' },
                                   }}
                                   transition="all 0.3s ease"
                                   w="100%"
                                 >
-                                  <VStack align="stretch" spacing={isWideVersion ? 4 : 3}>
+                                  <VStack align="stretch" spacing={{ base: 3, md: 3.5, lg: 4 }}>
                                     <Box>
                                       <Heading
-                                        fontSize={isWideVersion ? '22px' : '18px'}
+                                        fontSize={{ base: '18px', md: '20px', lg: '22px' }}
                                         fontWeight="bold"
                                         color={colors.foreground}
                                         mb={1}
@@ -1397,7 +1417,7 @@ function Home() {
                                         {item.title}
                                       </Heading>
                                       <Text
-                                        fontSize={isWideVersion ? '16px' : '14px'}
+                                        fontSize={{ base: '14px', md: '15px', lg: '16px' }}
                                         color="brand.500"
                                         fontWeight="600"
                                       >
@@ -1406,22 +1426,22 @@ function Home() {
                                     </Box>
 
                                     <Text
-                                      fontSize={isWideVersion ? '15px' : '14px'}
+                                      fontSize={{ base: '14px', md: '14.5px', lg: '15px' }}
                                       color={colors.comment}
-                                      lineHeight={isWideVersion ? '1.7' : '1.6'}
+                                      lineHeight={{ base: '1.6', md: '1.65', lg: '1.7' }}
                                     >
                                       {item.description}
                                     </Text>
 
-                                    <Flex wrap="wrap" gap={isWideVersion ? 2 : 1.5} mt={2}>
+                                    <Flex wrap="wrap" gap={{ base: 1.5, md: 2 }} mt={2}>
                                       {item.technologies.map((tech) => (
                                         <Badge
                                           key={tech}
                                           colorScheme="brand"
                                           variant="subtle"
-                                          px={isWideVersion ? 3 : 2}
+                                          px={{ base: 2, md: 2.5, lg: 3 }}
                                           py={1}
-                                          fontSize={isWideVersion ? '12px' : '11px'}
+                                          fontSize={{ base: '11px', md: '11.5px', lg: '12px' }}
                                           borderRadius="full"
                                         >
                                           {tech}
@@ -1465,12 +1485,12 @@ function Home() {
                     transition={{ duration: 0.6 }}
                   >
                     <HStack spacing={2} justify="center" mb={3}>
-                      <Icon as={RiLinksLine} color="brand.500" fontSize={isWideVersion ? '28px' : '24px'} />
+                      <Icon as={RiLinksLine} color="brand.500" fontSize={{ base: '24px', md: '26px', lg: '28px' }} />
                       <Text
-                        fontSize={isWideVersion ? '14px' : '12px'}
+                        fontSize={{ base: '12px', md: '13px', lg: '14px' }}
                         color="brand.500"
                         fontWeight="600"
-                        letterSpacing={isWideVersion ? '3px' : '2px'}
+                        letterSpacing={{ base: '2px', md: '2.5px', lg: '3px' }}
                         textTransform="uppercase"
                       >
                         Contato
@@ -1503,7 +1523,7 @@ function Home() {
                   </motion.div>
                 </Box>
 
-                <Flex justify="center" align="center" mt={isWideVersion ? 8 : 6} position="relative" zIndex={10} w="100%">
+                <Flex justify="center" align="center" mt={{ base: 6, md: 7, lg: 8 }} position="relative" zIndex={10} w="100%">
                   <motion.div
                     initial={{ opacity: 1 }}
                     animate={{ opacity: 1 }}
@@ -1513,13 +1533,13 @@ function Home() {
                     <Button
                       as="a"
                       href="mailto:pedrolcsferreira@gmail.com?subject=Contato%20do%20Portfólio"
-                      size={isWideVersion ? 'xl' : 'lg'}
+                      size={{ base: 'lg', md: 'xl' }}
                       bgGradient="linear(to-r, #ff79c6, #bd93f9)"
                       color="white"
                       fontWeight="700"
-                      fontSize={isWideVersion ? '22px' : '18px'}
-                      px={isWideVersion ? 12 : 10}
-                      py={isWideVersion ? 8 : 7}
+                      fontSize={{ base: '18px', md: '20px', lg: '22px' }}
+                      px={{ base: 10, md: 11, lg: 12 }}
+                      py={{ base: 7, md: 7.5, lg: 8 }}
                       borderRadius="16px"
                       boxShadow="0 15px 40px rgba(255, 121, 198, 0.4)"
                       _hover={{
